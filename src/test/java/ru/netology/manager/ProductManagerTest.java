@@ -43,10 +43,28 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void shouldSearchProductById() {
+    public void shouldSearchSomeProductById() {
 
-        Product[] expected = {product3};
-        Product[] actual = manager.searchById("Samsung S22");
+        Product[] expected = {product1, product3};
+        Product[] actual = manager.searchById("Samsung");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNoSearchProductById() {
+
+        Product[] expected = {};
+        Product[] actual = manager.searchById("Зеркало");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchOneProductById() {
+
+        Product[] expected = {product2};
+        Product[] actual = manager.searchById("Гарри Поттер и Тайная Комната");
 
         Assertions.assertArrayEquals(expected, actual);
     }
